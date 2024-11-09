@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ GrammarGenie</title>
+
+    <!-- Meta Tags -->
+    <meta name="description" content="AI-powered grammar checking that respects your privacy. No servers, just vibes.">
+    <meta property="og:title" content="GrammarGenie | Your Vibe Check for Writing">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css" />
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,600,700&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Preload Key Assets -->
+    <link rel="preload" as="image" href="noise.svg">
+</head>
+<body class="preload">
+    <!-- Ambient Background -->
+    <div class="noise"></div>
+    <div class="gradient-blob"></div>
+
+    <!-- Navigation -->
+    <nav class="nav-container">
+        <div class="nav-content">
+            <div class="nav-logo">
+                <span class="logo-emoji">🧞</span>
+                <span class="logo-text">GrammarGenie</span>
+            </div>
+            <div class="nav-links">
+                <a href="https://github.com" class="nav-link">
+                    <i class="ph ph-github-logo"></i>
+                    <span>Open Source</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-container">
+        <section class="hero-section">
+            <h1 class="hero-title">
+                <span class="gradient-text">Grammar checking</span>
+                <br>for the digital age
+            </h1>
+            <p class="hero-subtitle">
+                Privacy-first AI that runs in your browser.
+                <br>No servers, no data collection, just pure magic.
+            </p>
+        </section>
+
+        <!-- Editor Card -->
+        <div class="editor-card">
+            <div class="editor-header">
+                <div class="window-controls">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="editor-actions">
+                    <button class="action-btn" id="clearBtn">
+                        <i class="ph ph-eraser"></i>
+                        Clear
+                    </button>
+                    <button class="action-btn" id="copyBtn">
+                        <i class="ph ph-copy"></i>
+                        Copy
+                    </button>
+                </div>
+            </div>
+            
+            <div class="editor-main">
+                <div class="editor-wrapper">
+                    <textarea 
+                        id="textInput"
+                        placeholder="Drop your text here... ✨"
+                        spellcheck="false"
+                    ></textarea>
+                    <div id="highlights" class="highlights"></div>
+                </div>
+                
+                <button id="checkGrammar" class="check-btn">
+                    <span class="btn-text">Check Writing</span>
+                    <span class="btn-icon">→</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Features Grid -->
+        <section class="features-grid">
+            <div class="feature-card">
+                <i class="ph ph-lock-key"></i>
+                <h3>Privacy First</h3>
+                <p>Your words stay on your device. Always.</p>
+            </div>
+            <div class="feature-card">
+                <i class="ph ph-brain"></i>
+                <h3>AI Powered</h3>
+                <p>State-of-the-art language processing for precise corrections.</p>
+            </div>
+            <div class="feature-card">
+                <i class="ph ph-lightning"></i>
+                <h3>Lightning Fast</h3>
+                <p>Instant corrections and suggestions powered by advanced AI.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Floating Elements -->
+    <div class="floating-elements">
+        <div class="float-element" data-speed="1">✨</div>
+        <div class="float-element" data-speed="2">🔮</div>
+        <div class="float-element" data-speed="1.5">⚡</div>
+        <div class="float-element" data-speed="2.5">💫</div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>Made with 💜 by the open-source community</p>
+            <div class="footer-links">
+                <a href="/privacy" class="footer-link">Privacy Policy</a>
+                <span class="footer-separator">•</span>
+                <a href="/terms" class="footer-link">Terms of Service</a>
+            </div>
+            <div class="social-links">
+                <a href="#" class="social-link">
+                    <i class="ph ph-user"></i>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="ph ph-github-logo"></i>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="ph ph-linkedin-logo"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/split-type"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
