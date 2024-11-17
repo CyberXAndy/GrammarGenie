@@ -9,7 +9,17 @@ document.addEventListener("DOMContentLoaded", async () => {
     const clearBtn = document.getElementById('clearBtn');
     const copyBtn = document.getElementById('copyBtn');
     const loadingSpinner = document.getElementById('loading-spinner');
+    const modelLoadingPopup = document.getElementById('model-loading-popup');
 
+    // Loading Messages Array
+    const loadingMessages = [
+        "Initializing neural networks...",
+        "Calibrating language models...",
+        "Loading grammar patterns...",
+        "Almost ready...",
+    ];
+    
+    let messageIndex = 0;
     let pipe;
 
     // Prioritize UI animations
@@ -153,12 +163,23 @@ document.addEventListener("DOMContentLoaded", async () => {
      */
     async function handleGrammarCheck() {
         const userInput = textInput.value.trim();
-        if (!userInput || !pipe) return;
-
+        if (!userInput) return;
+    
+        if (!pipe) {
+            modelLoadingPopup.style.display = 'flex';
+            const messageInterval = setInterval(updateLoadingMessage, 2000);
+            try {
+                await loadGrammarModel();
+            } finally {
+                clearInterval(messageInterval);
+                modelLoadingPopup.style.display = 'none';
+            }
+        }
+    
         checkGrammarBtn.setAttribute('disabled', 'true');
         loadingSpinner.style.display = 'block';
         outputDiv.style.display = 'none';
-
+    
         try {
             const correctedText = await correctGrammar(userInput);
             outputDiv.innerText = correctedText;
@@ -170,7 +191,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             loadingSpinner.style.display = 'none';
             checkGrammarBtn.removeAttribute('disabled');
         }
-    }
+    }    
 
     /**
      * Grammar correction function with capitalization and paragraph splitting.
@@ -301,4 +322,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     function saveToLocalStorage(text) {
         localStorage.setItem('grammarGenie_text', text);
     }
+
+    /**
+     * Updates the loading message text.
+     */
+    function updateLoadingMessage() {
+        const messageText = document.querySelector('.message-text');
+        messageText.textContent = loadingMessages[messageIndex];
+        messageIndex = (messageIndex + 1) % loadingMessages.length;
+    }
+
+
 });

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>✨ GrammarGenie</title>
     <script src="https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.0.2"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
 
     <!-- Meta Tags -->
     <meta name="description" content="AI-powered grammar checking that respects your privacy. No servers, just vibes.">
@@ -143,6 +144,50 @@
         </div>
     </footer>
 
+    <!-- model Loading Popup -->
+    <div id="model-loading-popup" class="model-loading-popup">
+        <div class="loading-content">
+            <div class="loading-visual">
+                <div class="neural-network">
+                    <div class="node"></div>
+                    <div class="node"></div>
+                    <div class="node"></div>
+                    <div class="connection"></div>
+                    <div class="connection"></div>
+                </div>
+            </div>
+            <h2>Initializing AI Model</h2>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <p class="status-text">One-time setup in progress...</p>
+            <div class="info-cards">
+                <div class="info-card">
+                    <span class="emoji">🔒</span>
+                    <p>Local LLM</p>
+                </div>
+                <div class="info-card">
+                    <span class="emoji">⚡</span>
+                    <p>Lightning Fast</p>
+                </div>
+                <div class="info-card">
+                    <span class="emoji">🧠</span>
+                    <p>Smart AI</p>
+                </div>
+            </div>
+            <div class="loading-message">
+                <div class="typing-indicator">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <p class="message-text">Loading neural networks...</p>
+            </div>
+        </div>
+    </div>
+    
+     
+    
     <!-- Scripts -->
     <script src="https://unpkg.com/split-type"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
