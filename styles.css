@@ -277,6 +277,27 @@ body {
     box-shadow: var(--glow);
 }
 
+#loading-spinner {
+    display: none;
+    color: #e67e22;
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+/* Output Container */
+.output-container {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    color: #f9fafb;
+}
+
 /* Features Grid */
 .features-grid {
     display: grid;
