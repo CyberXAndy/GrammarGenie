@@ -1,10 +1,20 @@
+/* ==============================
+General Container Styles
+============================== */
 .legal-container {
     max-width: 800px;
     margin: 120px auto 60px;
     padding: 0 20px;
-}
-
-.legal-container h1 {
+    }
+    @media (max-width: 768px) {
+    .legal-container {
+    margin-top: 100px;
+    }
+    }
+    /* ==============================
+    Heading Styles
+    ============================== */
+    .legal-container h1 {
     font-family: var(--font-display);
     font-size: 2.5rem;
     margin-bottom: 1rem;
@@ -12,77 +22,80 @@
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-}
-
-.last-updated {
+    }
+    @media (max-width: 768px) {
+    .legal-container h1 {
+    font-size: 2rem;
+    }
+    }
+    .legal-section h2 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+    }
+    @media (max-width: 768px) {
+    .legal-section h2 {
+    font-size: 1.25rem;
+    }
+    }
+    /* ==============================
+    Last Updated Text
+    ============================== */
+    .last-updated {
     color: var(--text-secondary);
     font-size: 0.9rem;
     margin-bottom: 2rem;
-}
-
-.legal-section {
+    }
+    /* ==============================
+    Section Styles
+    ============================== */
+    .legal-section {
     margin-bottom: 2.5rem;
     background: var(--bg-card);
     border: var(--card-border);
     border-radius: var(--card-radius);
     padding: 2rem;
-}
-
-.legal-section h2 {
-    font-family: var(--font-display);
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: var(--primary);
-}
-
-.legal-section p {
+    }
+    @media (max-width: 768px) {
+    .legal-section {
+    padding: 1.5rem;
+    }
+    }
+    /* ==============================
+    Text & List Styles
+    ============================== */
+    .legal-section p {
     margin-bottom: 1rem;
     line-height: 1.6;
-}
-
-.legal-section ul {
+    }
+    .legal-section ul {
     list-style-type: disc;
     margin-left: 1.5rem;
     margin-bottom: 1rem;
-}
-
-.legal-section li {
+    }
+    .legal-section li {
     margin-bottom: 0.5rem;
     line-height: 1.6;
-}
-
-.logo-link {
+    }
+    /* ==============================
+    Logo Link Styles
+    ============================== */
+    .logo-link {
     text-decoration: none;
     color: var(--text);
     display: flex;
     align-items: center;
     gap: 0.5rem;
-}
-
-@media (max-width: 768px) {
-    .legal-container {
-        margin-top: 100px;
     }
-
-    .legal-section {
-        padding: 1.5rem;
-    }
-
-    .legal-container h1 {
-        font-size: 2rem;
-    }
-
-    .legal-section h2 {
-        font-size: 1.25rem;
-    }
-}
-
-.home-button-container {
+    /* ==============================
+    Home Button Styles
+    ============================== */
+    .home-button-container {
     text-align: center;
     margin-top: 2.5rem;
-}
-
-.home-button {
+    }
+    .home-button {
     display: inline-block;
     padding: 0.75rem 1.5rem;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -92,9 +105,8 @@
     border-radius: 8px;
     text-decoration: none;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.home-button:hover {
+    }
+    .home-button:hover {
     transform: translateY(-2px);
     box-shadow: var(--glow);
-}
+    }
