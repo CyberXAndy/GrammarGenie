@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         "Loading grammar patterns...",
         "Almost ready...",
     ];
-    
+
     let messageIndex = 0;
     let pipe;
 
@@ -45,7 +45,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                 gsap.from(splitText.chars, {
                     opacity: 0,
                     y: 20,
-                    z: 0,
                     stagger: 0.02,
                     duration: 0.8,
                     ease: "power3.out",
@@ -73,10 +72,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     function initializeFeaturesGridAnimation() {
         const featureCards = document.querySelectorAll('.feature-card');
         featureCards.forEach(card => {
-            card.style.opacity = 1; // Ensure visibility before animation
+            card.style.opacity = 1;
         });
 
-        // Debounce scroll-triggered animation
         gsap.from('.feature-card', {
             scrollTrigger: {
                 trigger: '.features-grid',
@@ -92,11 +90,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     /**
-     * Floating elements optimized to match the exact behavior described.
+     * Floating elements optimized with random movement.
      */
     function initializeFloatingElements() {
         const elements = document.querySelectorAll('.float-element');
-
         elements.forEach(element => {
             const speed = element.dataset.speed || 1;
             const randomX = Math.random() * window.innerWidth;
@@ -107,10 +104,10 @@ document.addEventListener("DOMContentLoaded", async () => {
             element.style.top = `${randomY}px`;
 
             gsap.to(element, {
-                x: 'random(-100, 100)', // Random movement on X
-                y: 'random(-100, 100)', // Random movement on Y
+                x: 'random(-100, 100)',
+                y: 'random(-100, 100)',
                 duration: 10 * speed,
-                repeat: -1, // Infinite loop
+                repeat: -1,
                 yoyo: true,
                 ease: 'sine.inOut',
             });
@@ -132,39 +129,35 @@ document.addEventListener("DOMContentLoaded", async () => {
             console.error("Error loading AI model:", error);
             outputDiv.innerText = "Failed to load AI model. Retrying...";
             outputDiv.style.display = 'block';
-
-            // Retry model loading after a short delay
             setTimeout(() => loadGrammarModel(), 3000);
         }
     }
 
     /**
-     * Event listeners with throttling and debouncing.
+     * Event listeners with debouncing and throttling.
      */
     function initializeEventListeners() {
         checkGrammarBtn.addEventListener('click', async () => handleGrammarCheck());
         clearBtn.addEventListener('click', clearEditor);
         copyBtn.addEventListener('click', async () => copyToClipboard(outputDiv.innerText));
 
-        // Input debouncing
         textInput.addEventListener('input', debounce(() => {
             saveToLocalStorage(textInput.value);
             toggleButtonState();
         }, 300));
 
-        // Throttle window resize event
         window.addEventListener('resize', throttle(() => {
             console.log("Window resized");
         }, 200));
     }
 
     /**
-     * Grammar checking logic with error handling and spinner.
+     * Grammar checking logic with error handling.
      */
     async function handleGrammarCheck() {
         const userInput = textInput.value.trim();
         if (!userInput) return;
-    
+
         if (!pipe) {
             modelLoadingPopup.style.display = 'flex';
             const messageInterval = setInterval(updateLoadingMessage, 2000);
@@ -175,11 +168,11 @@ document.addEventListener("DOMContentLoaded", async () => {
                 modelLoadingPopup.style.display = 'none';
             }
         }
-    
+
         checkGrammarBtn.setAttribute('disabled', 'true');
         loadingSpinner.style.display = 'block';
         outputDiv.style.display = 'none';
-    
+
         try {
             const correctedText = await correctGrammar(userInput);
             outputDiv.innerText = correctedText;
@@ -191,24 +184,20 @@ document.addEventListener("DOMContentLoaded", async () => {
             loadingSpinner.style.display = 'none';
             checkGrammarBtn.removeAttribute('disabled');
         }
-    }    
+    }
 
     /**
-     * Grammar correction function with capitalization and paragraph splitting.
+     * Grammar correction function.
      */
     async function correctGrammar(text) {
-        // Split text into paragraphs based on line breaks
-        const paragraphs = text.split('\n').filter(paragraph => paragraph.trim() !== '');
-
-        // Process each paragraph separately
+        const paragraphs = text.split('\n').filter(p => p.trim() !== '');
         const correctedParagraphs = [];
+
         for (const paragraph of paragraphs) {
             const sentences = splitSentences(paragraph);
             const correctedSentences = [];
-
-            // Correct each sentence
             for (let sentence of sentences) {
-                sentence = capitalizeFirstLetter(sentence); // Ensure capitalization
+                sentence = capitalizeFirstLetter(sentence);
                 try {
                     const result = await pipe(`grammar: ${sentence}`, {
                         num_beams: 5,
@@ -217,23 +206,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                     });
                     correctedSentences.push(result[0].generated_text.trim());
                 } catch {
-                    correctedSentences.push(sentence); // Fallback to original text on error
+                    correctedSentences.push(sentence);
                 }
             }
-
-            // Join the sentences back with proper punctuation
             correctedParagraphs.push(correctedSentences.join(' '));
         }
-
-        // Join paragraphs with line breaks for the output
         return correctedParagraphs.join('\n\n');
     }
 
-    /**
-     * Splits text into sentences, handling punctuation and line breaks.
-     */
     function splitSentences(text) {
-        // Regular expression to split text by punctuation marks that indicate sentence breaks
         const sentenceEndings = /([.!?])\s+/;
         return text.split(sentenceEndings).filter(Boolean).map((part, index, arr) => {
             if (index % 2 === 0) return part + (arr[index + 1] || '');
@@ -241,17 +222,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         }).filter(Boolean);
     }
 
-    /**
-     * Capitalizes the first letter of a sentence if it's not capitalized.
-     */
     function capitalizeFirstLetter(sentence) {
         if (!sentence) return sentence;
         return sentence.charAt(0).toUpperCase() + sentence.slice(1);
     }
 
-    /**
-     * Clears input and output areas.
-     */
     function clearEditor() {
         textInput.value = '';
         outputDiv.innerText = '';
@@ -259,9 +234,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         toggleButtonState();
     }
 
-    /**
-     * Toggles button states based on input content.
-     */
     function toggleButtonState() {
         const hasText = textInput.value.trim().length > 0;
         checkGrammarBtn.disabled = !hasText;
@@ -269,9 +241,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         copyBtn.disabled = !hasText;
     }
 
-    /**
-     * Copies text to clipboard.
-     */
     async function copyToClipboard(text) {
         if (!text) return;
         try {
@@ -283,9 +252,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 
-    /**
-     * Debounce function to limit function execution frequency.
-     */
     function debounce(func, wait) {
         let timeout;
         return (...args) => {
@@ -294,9 +260,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         };
     }
 
-    /**
-     * Throttle function to limit execution of frequent events.
-     */
     function throttle(func, limit) {
         let lastFunc;
         let lastRan;
@@ -316,21 +279,13 @@ document.addEventListener("DOMContentLoaded", async () => {
         };
     }
 
-    /**
-     * Saves text input to local storage.
-     */
     function saveToLocalStorage(text) {
         localStorage.setItem('grammarGenie_text', text);
     }
 
-    /**
-     * Updates the loading message text.
-     */
     function updateLoadingMessage() {
         const messageText = document.querySelector('.message-text');
         messageText.textContent = loadingMessages[messageIndex];
         messageIndex = (messageIndex + 1) % loadingMessages.length;
     }
-
-
 });
