@@ -1,0 +1,74 @@
+MIT License
+
+Copyright (c) 2024 Andy Behbood
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+-------------------------------------------------------------------------------
+
+Third-Party Components:
+
+1. Transformers.js
+   - License: Apache License 2.0
+   - Source: https://github.com/xenova/transformers.js
+   - Copyright (c) Hugging Face team and Xenova
+
+2. T5-base-grammar-correction Model
+   - License: Apache License 2.0
+   - Source: https://huggingface.co/Xenova/t5-base-grammar-correction
+   - Copyright (c) Xenova
+
+3. GSAP (GreenSock Animation Platform)
+   - Standard "No Charge" GreenSock License
+   - Source: https://greensock.com/standard-license/
+
+4. Phosphor Icons
+   - License: MIT
+   - Source: https://phosphoricons.com/
+   - Copyright (c) 2023 Phosphor Icons
+
+5. Lottie-web
+   - License: MIT
+   - Source: https://github.com/airbnb/lottie-web
+   - Copyright (c) 2015-present Airbnb, Inc.
+
+For the full license texts of these components, please refer to their respective
+websites and repositories.
+
+Note: This project's use of Transformers.js and the T5-base-grammar-correction
+model complies with their respective Apache 2.0 licenses, which allows for
+commercial and private use, modification, and distribution with proper attribution.
+
+-------------------------------------------------------------------------------
+
+NOTICE OF COMPLIANCE AND ATTRIBUTION:
+
+This software uses Transformers.js and the T5-base-grammar-correction model, both
+licensed under the Apache License 2.0. In accordance with the terms of these
+licenses, we provide the following attribution:
+
+- Transformers.js is developed and maintained by Hugging Face and Xenova
+- The T5-base-grammar-correction model is created and maintained by Xenova
+
+For complete details of the Apache License 2.0, visit:
+https://www.apache.org/licenses/LICENSE-2.0
+
+-------------------------------------------------------------------------------
+
+End of License
